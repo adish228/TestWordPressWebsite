@@ -3,8 +3,18 @@
     margin:0;
     box-sizing: border-box;
 }
-$txtWhite : #fff;
-$footerBg:  #222;
+
+@import './variables';
+@import './header';
+@import './mixins';
+
+@function weight($weight-name){
+    @return  map-get($font-weights, $weight-name);
+}
+
+body{
+    background-color:$bodyColor;
+}
 // header css
 header{
     nav{
@@ -49,4 +59,26 @@ footer{
         color:$txtWhite;
         border-radius: 4px;;
     }
+}
+
+
+.main{
+    @include flexCenter(column);
+    width: 80%;
+    margin: auto;
+    &_paragraph{
+        font-weight: weight(medium);
+        color:$btnText;
+        font-size: 1em;
+        &:hover{
+            color:$btnColor;
+        }
+    }
+    @include mobile{
+        @include flexCenter(row);
+    }
+}
+.light{
+    @include theme(false);
+    @include flexCenter(row);
 }
