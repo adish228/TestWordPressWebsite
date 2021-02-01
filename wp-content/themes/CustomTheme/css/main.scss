@@ -1,0 +1,84 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+@import './variables';
+@import './header';
+@import './mixins';
+
+@function weight($weight-name){
+    @return  map-get($font-weights, $weight-name);
+}
+
+body{
+    background-color:$bodyColor;
+}
+// header css
+header{
+    nav{
+        ul{
+            li{
+                a{
+                    color:$txtWhite !important;
+                }
+            }
+        }
+    }
+}
+
+// header{
+//     & a{
+//         color:$txtWhite !important;
+//     }
+// }
+
+// footer css
+footer{
+    background-color: $footerBg;
+    p{  
+        color:$txtWhite;
+    }
+}
+.post_col{
+    h2{
+        font-size:1.5rem;
+    }
+    p{
+        font-size:0.8rem;
+    }
+}
+// blog pagination
+.blog_paging{
+    .page-numbers{
+        padding:.2rem .5rem;
+    }
+    .page-numbers.current{
+        background-color: $footerBg;
+        color:$txtWhite;
+        border-radius: 4px;;
+    }
+}
+
+
+.main{
+    @include flexCenter(column);
+    width: 80%;
+    margin: auto;
+    &_paragraph{
+        font-weight: weight(medium);
+        color:$btnText;
+        font-size: 1em;
+        &:hover{
+            color:$btnColor;
+        }
+    }
+    @include mobile{
+        @include flexCenter(row);
+    }
+}
+.light{
+    @include theme(false);
+    @include flexCenter(row);
+}

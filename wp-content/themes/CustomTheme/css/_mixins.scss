@@ -1,0 +1,25 @@
+
+@mixin flexCenter($direction){
+    align-items:center;
+    display: flex;
+    justify-content: center;
+    flex-direction: $direction;
+}
+@mixin theme($light-theme:true){
+    @if $light-theme{
+        background-color: #f5f5f5;
+        .main{
+            &_paragraph{
+                color:red;
+                &:hover{
+                    color:salmon;
+                }
+            }
+        }
+    }
+}
+@mixin mobile{
+    @media (max-width : $mob-width){
+        @content;
+    }
+}
